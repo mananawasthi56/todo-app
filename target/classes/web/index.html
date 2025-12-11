@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TaskMaster Pro – Advanced To-Do App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body class="light">
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="logo">TM</div>
+            <h2 class="brand-name">TaskMaster</h2>
+        </div>
+
+        <div class="project-section">
+            <div class="section-header">
+                <h3>Projects</h3>
+                <button id="addProjectBtn" class="icon-btn">＋</button>
+            </div>
+            <div id="projectList" class="project-list"></div>
+        </div>
+
+        <div class="sidebar-footer">
+            <button id="themeToggle" class="btn small">Dark Mode</button>
+            <button id="syncBtn" class="btn small">Sync</button>
+        </div>
+    </aside>
+
+    <!-- MAIN PANEL -->
+    <main class="main">
+
+        <header class="topbar">
+            <div>
+                <h1 id="projectTitle">Inbox</h1>
+                <p class="muted small">Manage your tasks efficiently</p>
+            </div>
+
+            <div class="top-controls">
+                <input id="search" placeholder="Search...">
+                <button id="exportBtn" class="btn small">Export</button>
+                <button id="importBtn" class="btn small">Import</button>
+                <input id="importFile" type="file" class="hidden" accept="application/json">
+            </div>
+        </header>
+
+        <!-- ADD TASK -->
+        <section class="card add-card">
+            <div class="add-row">
+                <input id="taskInput" placeholder="Add a task...">
+                <select id="priority">
+                    <option value="0">Priority</option>
+                    <option value="1">P1</option>
+                    <option value="2">P2</option>
+                    <option value="3">P3</option>
+                </select>
+                <input id="due" type="date">
+                <button id="addBtn" class="btn primary">Add</button>
+            </div>
+        </section>
+
+        <!-- TASK LIST -->
+        <section class="card">
+            <div id="taskList" class="task-list"></div>
+
+            <div class="list-footer">
+                <span id="taskStats" class="muted small">0 tasks</span>
+                <button id="clearBtn" class="btn danger small">Clear All</button>
+            </div>
+        </section>
+
+        <!-- ANALYTICS -->
+        <section class="analytics card">
+            <h2>Analytics</h2>
+
+            <div class="analytics-grid">
+                <div><span>Total</span><span id="ana_total" class="number">0</span></div>
+                <div><span>Done</span><span id="ana_done" class="number">0</span></div>
+                <div><span>Pending</span><span id="ana_pending" class="number">0</span></div>
+                <div><span>Completion</span><span id="ana_rate" class="number">0%</span></div>
+            </div>
+
+            <div class="chart-wrapper">
+                <canvas id="anaChart"></canvas>
+            </div>
+        </section>
+
+    </main>
+
+</div>
+
+<!-- EDIT MODAL -->
+<div id="editModal" class="modal hidden">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeEdit()">✕</button>
+        <h3>Edit Task</h3>
+
+        <input id="editTitle" placeholder="Task title">
+        <select id="editPriority">
+            <option value="0">No priority</option>
+            <option value="1">P1</option>
+            <option value="2">P2</option>
+            <option value="3">P3</option>
+        </select>
+        <input id="editDue" type="date">
+
+        <div class="modal-actions">
+            <button id="saveEdit" class="btn primary">Save</button>
+            <button id="cancelEdit" class="btn" onclick="closeEdit()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div id="banner" class="banner hidden"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+:root {
+    --bg: #f5f6fa;
+    --card: #ffffff;
+    --accent: #1a73e8;
+    --danger: #d93025;
+    --text: #111;
+    --muted: #6b7280;
+    --radius: 12px;
+    --shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+body.dark {
+    --bg: #0d1117;
+    --card: #161b22;
+    --text: #e6eef8;
+    --muted: #9aa5b1;
+    --shadow: 0 6px 20px rgba(255,255,255,0.10);
+}
+
+body {
+    margin: 0;
+    font-family: Inter, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.hidden { display: none; }
+
+.app {
+    display: flex;
+    height: 100vh;
+}
+
+/* ------ SIDEBAR ------ */
+.sidebar {
+    width: 260px;
+    background: var(--card);
+    border-right: 1px solid #ddd;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.brand { display: flex; align-items: center; gap: 12px; }
+.logo {
+    width: 44px;
+    height: 44px;
+    background: var(--accent);
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.project-section { flex: 1; margin-top: 20px; }
+.section-header { display: flex; justify-content: space-between; }
+
+.project-list { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+
+.project-item {
+    padding: 10px 12px;
+    border-radius: var(--radius);
+    cursor: pointer;
+}
+
+.project-item:hover { background: rgba(0,0,0,0.05); }
+.project-item.active {
+    background: rgba(26,115,232,0.15);
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* ------ MAIN ------ */
+.main {
+    flex: 1;
+    padding: 28px;
+    overflow-y: auto;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Inputs */
+input, select {
+    padding: 10px;
+    border-radius: var(--radius);
+    border: 1px solid #ccc;
+    background: var(--card);
+    color: var(--text);
+}
+
+/* Cards */
+.card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-top: 20px;
+}
+
+/* Add Row */
+.add-row {
+    display: flex;
+    gap: 10px;
+}
+
+.task-list { margin-top: 12px; }
+
+/* ------ TASK ------ */
+.task {
+    background: var(--card);
+    padding: 14px;
+    border-radius: var(--radius);
+    display: flex;
+    justify-content: space-between;
+    box-shadow: var(--shadow);
+    margin-bottom: 12px;
+}
+
+.checkbox {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    border: 2px solid #bbb;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkbox.checked {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+/* Buttons */
+.btn {
+    padding: 8px 14px;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    background: #e3e3e3;
+}
+
+.primary { background: var(--accent); color: white; }
+.danger { background: var(--danger); color: white; }
+
+/* ------ ANALYTICS ------ */
+.analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.analytics-grid div {
+    background: rgba(0,0,0,0.06);
+    padding: 14px;
+    border-radius: var(--radius);
+    text-align: center;
+}
+
+body.dark .analytics-grid div {
+    background: rgba(255,255,255,0.08);
+}
+
+.number {
+    display: block;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+/* Chart Wrapper */
+.chart-wrapper {
+    width: 260px;
+    height: 260px;
+    margin: 0 auto;
+}
+
+#anaChart {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* ------ MODAL ------ */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.modal.hidden { display: none; }
+
+.modal-box {
+    background: var(--card);
+    padding: 20px;
+    border-radius: var(--radius);
+    width: 320px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modal-close {
+    position: absolute;
+    right: 14px;
+    top: 10px;
+    font-size: 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* Banner */
+.banner {
+    position: fixed;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 18px;
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
