@@ -27,6 +27,8 @@
     </dependencies>
 
     <build>
+
+        <!-- Include static resources -->
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -55,7 +57,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Copy all dependencies next to the JAR -->
+            <!-- Copy all dependency JARs to /target/lib -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -72,6 +74,16 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+
+            <!-- Allow "mvn exec:java" to run the backend -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>com.todo.App</mainClass>
+                </configuration>
             </plugin>
 
         </plugins>
